@@ -1,8 +1,8 @@
 <?php
 /*
 Plugin Name: Button Class for Links
-Plugin URI: http://wordpress.org/plugins/title-and-nofollow-for-links/
-Description: This plugin adds a "Button" checkbox to the Add/Edit Link box for adding a class attribute set to "btn."
+Plugin URI: https://benluoma.com
+Description: This plugin adds a "Button" checkbox to the Insert/Edit Link box for adding a class attribute set to "btn."
 Version: 1.0
 Author: Ben Luoma
 Author URI: https://benluoma.com
@@ -12,17 +12,13 @@ License URI: http://www.opensource.org/licenses/GPL-2.0
 
 function tnl_add_nofollow() {
     wp_deregister_script('wplink');
-    //wp_register_script('wplink',  plugins_url( '/inc/nofollow.min.js', __FILE__ ), array('jquery'), false, 1);
     wp_register_script('wplink',  plugins_url( '/inc/addbutton.js', __FILE__ ), array('jquery'), false, 1);
     wp_enqueue_script('wplink');
     wp_localize_script('wplink', 'wpLinkL10n', array(
         'title' => __('Insert/edit link'),
         'update' => __('Update'),
         'save' => __('Add Link'),
-        'noTitle' => __('(no title)'),
-        'labelTitle' => __( 'Title' ),
         'noMatchesFound' => __('No results found.'),
-        //'noFollow' => __(' Add <code>rel="nofollow"</code> to link', 'title-and-nofollow-for-links')
         'noFollow' => __(' Button', 'title-and-nofollow-for-links')
     ));
 }
